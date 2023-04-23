@@ -1,0 +1,49 @@
+body
+{
+    background-image: url("IMG/985061.jpg");
+}
+.Character
+{
+    position: fixed;
+    width: 160px;
+    height: 90px;
+    pointer-events: none;
+}
+.Enemy
+{
+    position: fixed;
+    width: 130px;
+    height: 60px;
+    pointer-events: none;
+}
+.Buffs
+{
+    position: fixed;
+    width: 80px;
+    height: 45px;
+    pointer-events: none;
+}
+.Projectiles
+{
+    position: fixed;
+    width: 50px;
+    height: 30px;
+    pointer-events: none;
+}
+#health
+{
+    position: fixed;
+    height:36px;
+    width: 1722px;
+    background-color: black;
+    border: 2px solid beige;
+    left: 98px;
+    top: 0px;
+}
+#bar
+{
+    width: 100%;
+    height: 68%;
+    background-color: red;
+    margin:5.7px;
+}
