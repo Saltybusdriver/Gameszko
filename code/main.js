@@ -32,7 +32,7 @@ class Player
         {
             if(Math.abs(Enemies[i].PosX-this.PosX)<50 && Math.abs(Enemies[i].PosY-this.PosY)<50 && !this.Invincibility) 
             {
-                this.HP-=1;
+                this.HP-=10;
                 this.Invincibility=true;
                 document.getElementById("bar").style.width = (Player1.HP -=1)+"%";
             }
@@ -65,7 +65,7 @@ class weapon
         else
         {
             
-            document.getElementById("Projectile").style.top = (this.PosY-=5)+"px";
+            document.getElementById("Projectile").style.top = (this.PosY-=10)+"px";
             if(this.PosY<1) this.ShotInAction=false;
         }
 
@@ -111,7 +111,7 @@ class Enemy
     }
 }
 
-let Player1 = new Player(500,500,10);
+let Player1 = new Player(500,500,15);
 
 let Enemies = new Array()
 let Projectile= new Array()
@@ -135,7 +135,7 @@ function AddEnemy()
     let y=(Math.random()*1080);
     img.style.left = x+"px";
     img.style.top = y+"px";
-    let Enemys = new Enemy(x,y,1);
+    let Enemys = new Enemy(x,y,5);
     Enemies.push(Enemys);
     document.getElementById('body').appendChild(img);
 }
