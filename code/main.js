@@ -14,7 +14,21 @@ class Player
         this.invCounter=0
     }
     Weapon = new weapon()
-
+    store(score)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'store_scores.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        var data = 'score=' +score;
+        xhr.addEventListener('load', function() {
+            if (xhr.status === 200) {
+              alert("Score updated successfully!");
+            } else {
+              alert("Error occurred while updating the score.");
+            }
+          });
+        xhr.send(data);
+    }
     Movement()
     {
         let x = this.PosX+=vx;
@@ -37,7 +51,12 @@ class Player
                 document.getElementById("bar").style.width = (Player1.HP -=1)+"%";
             }
         }
-        if(this.HP<1) alert("YO DIED")
+        if(this.HP<1)
+        {
+        
+            this.store(this.exp)
+            
+        }
     }
 }
 class weapon
@@ -65,7 +84,7 @@ class weapon
         else
         {
             
-            document.getElementById("Projectile").style.top = (this.PosY-=10)+"px";
+            document.getElementById("Projectile").style.top = (this.PosY-=5)+"px";
             if(this.PosY<1) this.ShotInAction=false;
         }
 
@@ -111,7 +130,7 @@ class Enemy
     }
 }
 
-let Player1 = new Player(500,500,15);
+let Player1 = new Player(500,500,10);
 
 let Enemies = new Array()
 let Projectile= new Array()
@@ -135,7 +154,7 @@ function AddEnemy()
     let y=(Math.random()*1080);
     img.style.left = x+"px";
     img.style.top = y+"px";
-    let Enemys = new Enemy(x,y,5);
+    let Enemys = new Enemy(x,y,1);
     Enemies.push(Enemys);
     document.getElementById('body').appendChild(img);
 }
@@ -198,8 +217,6 @@ function update()
         if(Enemies[i].HP==0)
         {
             if(Player1.exp%100==0) AddEnemy()
-
-
             Enemies[i].Respawn()
         }
     }
@@ -208,5 +225,7 @@ function update()
     EnemyMovement();
     Player1.Damaged()
     requestAnimationFrame(update);
+    var scoreDisplay = document.getElementById("scoreValue");
+    scoreDisplay.textContent = Player1.exp;
 }
 update();

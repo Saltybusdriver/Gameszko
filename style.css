@@ -9,6 +9,51 @@ body
     height: 90px;
     pointer-events: none;
 }
+#scores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: red;
+    position: fixed;
+    top: 50%;
+    left: 3%; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust the alpha value (0.7) for transparency */
+    padding: 20px;
+  }
+  #f1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+  }
+  #f1 label
+  {
+    color: #fff;
+  }
+  #f1 label,
+  #f1 input {
+    margin-bottom: 10px;
+  }
+  
+  #f1 input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  #f1 input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
 .Enemy
 {
     position: fixed;
